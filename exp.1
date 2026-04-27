@@ -1,0 +1,95 @@
+) Count number of words in a string
+
+ Using stringstream (STL)
+
+
+#include <iostream>
+#include <sstream>
+using namespace std;
+
+int main() {
+    string str = "This is a sample string";
+    stringstream ss(str);
+    string word;
+    int count = 0;
+
+    while (ss >> word) {
+        count++;
+    }
+
+    cout << "Number of words: " << count;
+    return 0;
+}
+
+
+ii) Matrix Transpose
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    int rows = 2, cols = 3;
+
+    vector<vector<int>> matrix = {
+        {1, 2, 3},
+        {4, 5, 6}
+    };
+
+    vector<vector<int>> transpose(cols, vector<int>(rows));
+
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            transpose[j][i] = matrix[i][j];
+        }
+    }
+
+    cout << "Transpose Matrix:\n";
+    for (int i = 0; i < cols; i++) {
+        for (int j = 0; j < rows; j++) {
+            cout << transpose[i][j] << " ";
+        }
+        cout << endl;
+    }
+
+    return 0;
+}
+
+
+
+iii) Fibonacci Series
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n = 10;
+    int a = 0, b = 1, c;
+
+    cout << "Fibonacci Series: " << a << " " << b << " ";
+
+    for (int i = 2; i < n; i++) {
+        c = a + b;
+        cout << c << " ";
+        a = b;
+        b = c;
+    }
+
+    return 0;
+}
+
+iv) Power (M^N)
+#include <iostream>
+using namespace std;
+
+int power(int m, int n) {
+    int result = 1;
+    for (int i = 0; i < n; i++) {
+        result *= m;
+    }
+    return result;
+}
+
+int main() {
+    int m = 2, n = 5;
+    cout << "Result: " << power(m, n);
+    return 0;
+}
