@@ -1,0 +1,142 @@
+i) Second Largest Element
+#include <iostream>
+using namespace std;
+
+int main() {
+    int arr[] = {10, 5, 20, 8};
+    int n = 4;
+
+    int first = -1, second = -1;
+
+    for (int i = 0; i < n; i++) {
+        if (arr[i] > first) {
+            second = first;
+            first = arr[i];
+        } else if (arr[i] > second && arr[i] != first) {
+            second = arr[i];
+        }
+    }
+
+    cout << "Second Largest: " << second;
+}
+
+
+ii) Check if array is sorted
+#include <iostream>
+using namespace std;
+
+bool isSorted(int arr[], int n) {
+    for (int i = 1; i < n; i++) {
+        if (arr[i] < arr[i-1])
+            return false;
+    }
+    return true;
+}
+
+int main() {
+    int arr[] = {1, 2, 3, 4};
+    cout << isSorted(arr, 4);
+}
+
+
+iii) Move all zeroes to end
+#include <iostream>
+using namespace std;
+
+int main() {
+    int arr[] = {0, 1, 0, 3, 12};
+    int n = 5;
+
+    int j = 0;
+
+    for (int i = 0; i < n; i++) {
+        if (arr[i] != 0) {
+            swap(arr[i], arr[j]);
+            j++;
+        }
+    }
+
+    for (int i = 0; i < n; i++)
+        cout << arr[i] << " ";
+}
+
+
+iv) Rotate array left by one
+#include <iostream>
+using namespace std;
+
+int main() {
+    int arr[] = {1, 2, 3, 4};
+    int n = 4;
+
+    int first = arr[0];
+
+    for (int i = 0; i < n-1; i++)
+        arr[i] = arr[i+1];
+
+    arr[n-1] = first;
+
+    for (int i = 0; i < n; i++)
+        cout << arr[i] << " ";
+}
+
+
+
+v) Leaders in array
+#include <iostream>
+using namespace std;
+
+int main() {
+    int arr[] = {16, 17, 4, 3, 5, 2};
+    int n = 6;
+
+    int maxRight = arr[n-1];
+    cout << maxRight << " ";
+
+    for (int i = n-2; i >= 0; i--) {
+        if (arr[i] > maxRight) {
+            cout << arr[i] << " ";
+            maxRight = arr[i];
+        }
+    }
+}
+
+
+
+vi) Transpose of matrix
+#include <iostream>
+using namespace std;
+
+int main() {
+    int mat[2][2] = {{1,2},{3,4}};
+
+    for (int i = 0; i < 2; i++) {
+        for (int j = 0; j < 2; j++) {
+            cout << mat[j][i] << " ";
+        }
+        cout << endl;
+    }
+}
+vii) Snake Pattern
+#include <iostream>
+using namespace std;
+
+int main() {
+    int mat[3][3] = {
+        {1,2,3},
+        {4,5,6},
+        {7,8,9}
+    };
+
+    for (int i = 0; i < 3; i++) {
+        if (i % 2 == 0) {
+            for (int j = 0; j < 3; j++)
+                cout << mat[i][j] << " ";
+        } else {
+            for (int j = 3-1; j >= 0; j--)
+                cout << mat[i][j] << " ";
+        }
+        cout << endl;
+    }
+}
+
