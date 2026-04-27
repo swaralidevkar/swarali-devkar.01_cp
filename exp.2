@@ -1,0 +1,118 @@
+1) Check nth bit (set or clear)
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int N = 10;  // Example: 10 = 1010
+    int n = 1;   // Check 1st bit (from right, 0-based)
+
+    if (N & (1 << n))
+        cout << "Bit is SET";
+    else
+        cout << "Bit is CLEAR";
+
+    return 0;
+}
+
+
+ii) Maximum AND value (pairwise)
+
+#include <iostream>
+using namespace std;
+
+int maxAND(int arr[], int n) {
+    int result = 0;
+
+    for (int bit = 31; bit >= 0; bit--) {
+        int count = 0;
+
+        for (int i = 0; i < n; i++) {
+            if ((arr[i] & (result | (1 << bit))) == (result | (1 << bit)))
+                count++;
+        }
+
+        if (count >= 2)
+            result |= (1 << bit);
+    }
+
+    return result;
+}
+
+int main() {
+    int arr[] = {4, 8, 12, 16};
+    int n = 4;
+
+    cout << "Maximum AND value: " << maxAND(arr, n);
+    return 0;
+}
+
+
+iii) Even or Odd using bitwise
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int N = 7;
+
+    if (N & 1)
+        cout << "Odd";
+    else
+        cout << "Even";
+
+    return 0;
+}
+
+iv) Number of digits in factorial (P!)
+
+
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int digitsInFactorial(int P) {
+    double sum = 0;
+    for (int i = 1; i <= P; i++) {
+        sum += log10(i);
+    }
+    return floor(sum) + 1;
+}
+
+int main() {
+    int P = 5;
+    cout << "Digits in factorial: " << digitsInFactorial(P);
+    return 0;
+}
+
+
+v) Count digits in a number
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int P = 12345;
+    int count = 0;
+
+    while (P > 0) {
+        P /= 10;
+        count++;
+    }
+
+    cout << "Digits: " << count;
+    return 0;
+}
+
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int main() {
+    int P = 12345;
+
+    int digits = floor(log10(P)) + 1;
+
+    cout << "Digits: " << digits;
+    return 0;
+}
