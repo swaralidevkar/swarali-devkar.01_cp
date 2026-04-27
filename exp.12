@@ -1,0 +1,55 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    int n = 4; // number of vertices
+
+    // ---------- 1. Adjacency Matrix ----------
+    int graph[4][4] = {0};
+
+    // Example edges (undirected)
+    graph[0][1] = graph[1][0] = 1;
+    graph[0][2] = graph[2][0] = 1;
+    graph[1][2] = graph[2][1] = 1;
+    graph[0][3] = graph[3][0] = 1;
+
+    cout << "Adjacency Matrix:\n";
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            cout << graph[i][j] << " ";
+        }
+        cout << endl;
+    }
+
+    // ---------- 2. Adjacency List ----------
+    vector<int> adjList[4];
+
+    adjList[0] = {1, 2, 3};
+    adjList[1] = {0, 2};
+    adjList[2] = {0, 1};
+    adjList[3] = {0};
+
+    cout << "\nAdjacency List:\n";
+    for (int i = 0; i < n; i++) {
+        cout << i << " -> ";
+        for (int x : adjList[i]) {
+            cout << x << " ";
+        }
+        cout << endl;
+    }
+
+    // ---------- 3. Count Edges ----------
+    int edgeCount = 0;
+
+    for (int i = 0; i < n; i++) {
+        for (int j = i; j < n; j++) { // avoid double count
+            if (graph[i][j] == 1)
+                edgeCount++;
+        }
+    }
+
+    cout << "\nTotal edges: " << edgeCount << endl;
+
+    return 0;
+}
