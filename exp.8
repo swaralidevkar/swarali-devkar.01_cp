@@ -1,0 +1,78 @@
+i) Find substring (return index or -1)
+#include <iostream>
+using namespace std;
+
+int main() {
+    string s = "helloworld";
+    string find = "world";
+
+    int pos = s.find(find);
+
+    if (pos != -1)
+        cout << "Found at index: " << pos;
+    else
+        cout << "-1";
+}
+
+
+
+ii) Check Anagram
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    string s1 = "listen", s2 = "silent";
+
+    sort(s1.begin(), s1.end());
+    sort(s2.begin(), s2.end());
+
+    if (s1 == s2)
+        cout << "Anagram";
+    else
+        cout << "Not Anagram";
+}
+
+
+
+iii) Leftmost Repeating Character
+#include <iostream>
+using namespace std;
+
+int main() {
+    string s = "geeksforgeeks";
+    int freq[256] = {0};
+
+    for (int i = 0; i < s.length(); i++)
+        freq[s[i]]++;
+
+    for (int i = 0; i < s.length(); i++) {
+        if (freq[s[i]] > 1) {
+            cout << s[i];
+            return 0;
+        }
+    }
+
+    cout << "-1";
+}
+
+
+iv) Reverse words (not characters)
+#include <iostream>
+#include <sstream>
+#include <vector>
+using namespace std;
+
+int main() {
+    string s = "I love coding";
+    stringstream ss(s);
+    vector<string> words;
+    string word;
+
+    while (ss >> word)
+        words.push_back(word);
+
+    for (int i = words.size()-1; i >= 0; i--)
+        cout << words[i] << " ";
+}
+
