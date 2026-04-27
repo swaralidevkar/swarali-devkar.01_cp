@@ -1,0 +1,61 @@
+i) Queue using Array
+#include <iostream>
+using namespace std;
+
+class Queue {
+    int arr[100], front, rear;
+
+public:
+    Queue() { front = rear = -1; }
+
+    void enqueue(int x) {
+        arr[++rear] = x;
+    }
+
+    void dequeue() {
+        if (front < rear)
+            front++;
+    }
+
+    int getFront() {
+        return arr[front + 1];
+    }
+};
+ii) Queue using STL
+#include <queue>
+#include <iostream>
+using namespace std;
+
+int main() {
+    queue<int> q;
+
+    q.push(10);
+    q.push(20);
+
+    cout << q.front();
+}
+iii) Find size without size()
+int count = 0;
+
+while (!q.empty()) {
+    q.pop();
+    count++;
+}
+cout << count;
+
+
+iv) Deque (Double-ended queue)
+#include <deque>
+#include <iostream>
+using namespace std;
+
+int main() {
+    deque<int> dq;
+
+    dq.push_front(10);
+    dq.push_back(20);
+
+    dq.pop_front();
+    dq.pop_back();
+}
+
