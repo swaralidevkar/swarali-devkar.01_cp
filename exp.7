@@ -1,0 +1,78 @@
+i) STL sort()
+#include <algorithm>
+#include <iostream>
+using namespace std;
+
+int main() {
+    int arr[] = {5, 2, 9, 1};
+    sort(arr, arr + 4);
+
+    for (int x : arr)
+        cout << x << " ";
+}
+
+
+
+ii) Bubble Sort
+for (int i = 0; i < n-1; i++) {
+    for (int j = 0; j < n-i-1; j++) {
+        if (arr[j] > arr[j+1])
+            swap(arr[j], arr[j+1]);
+    }
+}
+iii) Insertion Sort
+for (int i = 1; i < n; i++) {
+    int key = arr[i];
+    int j = i - 1;
+
+    while (j >= 0 && arr[j] > key) {
+        arr[j+1] = arr[j];
+        j--;
+    }
+    arr[j+1] = key;
+}
+iv) Intersection of two sorted arrays
+int i = 0, j = 0;
+
+while (i < n && j < m) {
+    if (a[i] == b[j]) {
+        cout << a[i] << " ";
+        i++; j++;
+    }
+    else if (a[i] < b[j])
+        i++;
+    else
+        j++;
+}
+
+
+
+v) Kth Smallest Element
+#include <algorithm>
+
+sort(arr, arr + n);
+cout << arr[k-1];
+
+
+
+vi) Triplets with Zero Sum
+#include <algorithm>
+using namespace std;
+
+bool hasTriplet(int arr[], int n) {
+    sort(arr, arr + n);
+
+    for (int i = 0; i < n-2; i++) {
+        int l = i+1, r = n-1;
+
+        while (l < r) {
+            int sum = arr[i] + arr[l] + arr[r];
+
+            if (sum == 0) return true;
+            else if (sum < 0) l++;
+            else r--;
+        }
+    }
+    return false;
+}
+
