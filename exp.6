@@ -1,0 +1,82 @@
+i) Recursive Binary Search
+#include <iostream>
+using namespace std;
+
+int binarySearch(int arr[], int low, int high, int x) {
+    if (low > high) return -1;
+
+    int mid = (low + high) / 2;
+
+    if (arr[mid] == x) return mid;
+    else if (arr[mid] > x)
+        return binarySearch(arr, low, mid - 1, x);
+    else
+        return binarySearch(arr, mid + 1, high, x);
+}
+
+int main() {
+    int arr[] = {1,2,3,4,5};
+    cout << binarySearch(arr, 0, 4, 3);
+}
+
+
+ii) First Occurrence in Sorted Array
+int firstOccurrence(int arr[], int n, int x) {
+    int low = 0, high = n - 1, ans = -1;
+
+    while (low <= high) {
+        int mid = (low + high) / 2;
+
+        if (arr[mid] == x) {
+            ans = mid;
+            high = mid - 1; // move left
+        } else if (arr[mid] > x)
+            high = mid - 1;
+        else
+            low = mid + 1;
+    }
+    return ans;
+}
+
+
+
+iii) Peak Element (O(log n))
+int peak(int arr[], int n) {
+    int low = 0, high = n - 1;
+
+    while (low < high) {
+        int mid = (low + high) / 2;
+
+        if (arr[mid] < arr[mid + 1])
+            low = mid + 1;
+        else
+            high = mid;
+    }
+    return low;
+}
+
+
+iv) Two Pointer (Pair sum)
+#include <iostream>
+using namespace std;
+
+int main() {
+    int arr[] = {1,2,3,4,6};
+    int n = 5, X = 6;
+
+    int l = 0, r = n - 1;
+
+    while (l < r) {
+        int sum = arr[l] + arr[r];
+
+        if (sum == X) {
+            cout << "Pair found";
+            break;
+        }
+        else if (sum < X)
+            l++;
+        else
+            r--;
+    }
+}
+
